@@ -20,9 +20,7 @@ RUN dpkg --add-architecture i386 \
     libgdiplus \
     libsdl2-2.0-0:i386 \
     nodejs \
-    npm \
- && mkdir /node_modules \
- && npm install --prefix / ws \
+    node-ws \
  && useradd -d /home/container -m container \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
