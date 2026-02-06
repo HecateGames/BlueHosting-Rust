@@ -11,11 +11,14 @@ RUN dpkg --add-architecture i386 \
  && apt upgrade -y \
  && apt install -y lib32gcc-s1 lib32stdc++6 unzip curl iproute2 tzdata libgdiplus libsdl2-2.0-0:i386 \
  && apt install -y nodejs npm \
- && npm install -g ws \
+ && mkdir -p /opt/app && cd /opt/app \
+ && echo '{"dependencies":{"ws":"*"}}' > package.json \
+ && npm install \
  && useradd -d /home/container -m container
 
 USER container
 ENV USER=container HOME=/home/container
+ENV NODE_PATH=/opt/app/node_modules
 
 WORKDIR /home/container
 
