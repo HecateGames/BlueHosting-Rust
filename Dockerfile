@@ -19,6 +19,7 @@ RUN dpkg --add-architecture i386 \
 USER container
 ENV USER=container HOME=/home/container
 ENV NODE_PATH=/opt/app/node_modules
+ENV AUTO_UPDATE=0
 
 WORKDIR /home/container
 
