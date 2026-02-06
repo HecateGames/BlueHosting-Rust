@@ -5,7 +5,7 @@ cd /home/container
 export INTERNAL_IP=$(ip route get 1 2>/dev/null | awk '{print $(NF-2);exit}')
 
 # Steam update: только при явном AUTO_UPDATE=1 (для devblog оставляем выкл по умолчанию)
-if [[ "${AUTO_UPDATE}" == "1" ]]; then
+if [[ "${AUTO_UPDATE}" == "0" ]]; then
  ./steamcmd/steamcmd.sh +force_install_dir /home/container +login anonymous +app_update 258550 +quit
 else
  echo "Steam update disabled (AUTO_UPDATE!=1). Using existing game files."
